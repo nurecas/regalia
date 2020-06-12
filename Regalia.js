@@ -112,7 +112,7 @@ function loadAsyncAPI() {
         })
     };
 
-    return fetch(`https://cors-anywhere.herokuapp.com/https://api.thegraph.com/subgraphs/name/asyncart/async-art`, options)
+    return fetch(`https://api.thegraph.com/subgraphs/name/asyncart/async-art`, options)
         .then(res => res.json());
 }
 
