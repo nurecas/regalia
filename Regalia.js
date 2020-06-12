@@ -120,7 +120,7 @@ function initializeOnAPI(res) {
     var paletteLever = res.data.master.layers[0].levers[0].currentValue;
     var insigniaLever = res.data.master.layers[1].levers[0].currentValue;
     var symmetryLever = res.data.master.layers[2].levers[0].currentValue;
-    var brushSizeLever = res.data.master.layers[3].levers[0].currentValue;
+    var brushSizeLever = res.data.master.layers[2].levers[0].currentValue;
 
     if (paletteLever <= 4) {
         palette = palettes[paletteLever];
