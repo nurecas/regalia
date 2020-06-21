@@ -247,11 +247,11 @@ function draw() {
 function linksInit() {
     var links = document.createElement("div");
     links.style.textAlign = "center";
-    links.style.marginTop = "1%";
+    links.style.marginTop = "2%";
 
     var downloadLink = document.createElement("label");
     downloadLink.style.fontFamily = "Questrial";
-    downloadLink.style.margin = "30px";
+    downloadLink.style.margin = "15px";
     downloadLink.style.color = "darkslategray";
     downloadLink.style.cursor = "pointer";
     downloadLink.innerHTML = "Download";
@@ -262,7 +262,7 @@ function linksInit() {
 
     var communityLink = document.createElement("a");
     communityLink.style.fontFamily = "Questrial";
-    communityLink.style.margin = "30px";
+    communityLink.style.margin = "15px";
     communityLink.style.color = "darkslategray";
     communityLink.style.cursor = "pointer";
     communityLink.innerHTML = "Community Creations";
