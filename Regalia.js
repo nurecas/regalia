@@ -30,7 +30,8 @@ let brushSize;
 let img, img1, img2, img3, img4, img5, img6, img7, loadImg;
 let strokeVal;
 let loading = true;
-let asyncMasterID = '192';
+//Change this to the Master ID of the artwork
+let asyncMasterID = '256';
 
 function setup() {
     if (windowWidth >= windowHeight) {
@@ -46,6 +47,7 @@ function setup() {
             createCanvas(800, 800);
         }
     }
+    linksInit();
     angleMode(DEGREES);
     //Royal
     palette1 = [color("#FFFFFF"), color("#F2D39B"), color("#FFDD03"), color("#CC0000"), color("#FC9D05"), color("#202020"), color("#000000")];
@@ -102,6 +104,7 @@ function windowResized() {
 }
 
 function loadAsyncAPI() {
+    //Async API Load
     const options = {
         method: "post",
         headers: {
@@ -117,10 +120,11 @@ function loadAsyncAPI() {
 }
 
 function initializeOnAPI(res) {
+    //Async API initialize and store data
     var paletteLever = res.data.master.layers[0].levers[0].currentValue;
     var insigniaLever = res.data.master.layers[1].levers[0].currentValue;
     var symmetryLever = res.data.master.layers[2].levers[0].currentValue;
-    var brushSizeLever = res.data.master.layers[2].levers[0].currentValue;
+    var brushSizeLever = res.data.master.layers[3].levers[0].currentValue;
 
     if (paletteLever <= 4) {
         palette = palettes[paletteLever];
@@ -135,7 +139,7 @@ function initializeOnAPI(res) {
     }
 
     if (symmetryLever <= 30) {
-        symmetry = symmetryLever;
+        symmetry = 30;
     } else {
         symmetry = 30;
     }
@@ -146,12 +150,9 @@ function initializeOnAPI(res) {
         brushSize = width / 150;
     }
 
-    //    console.log(res.data.master);
     angle = 360 / symmetry;
     strokeVal = palette[0];
     background(palette[6]);
-    //To show Symmetry Lines
-    //translate(width / 2, height / 2);
     for (let i = 0; i < symmetry; i++) {
         stroke(palette[4]);
         strokeWeight(width / 180);
@@ -173,6 +174,7 @@ function keyPressed() {
 }
 
 function draw() {
+    //Drawing the brush stroke
     translate(width / 2, height / 2);
     if (mouseX > 0 && mouseX < width && mouseY > 0 && mouseY < height) {
         let mx = mouseX - width / 2;
@@ -210,6 +212,7 @@ function draw() {
             newSeed = true;
         }
     }
+    //Rendering components
     imageMode(CENTER);
     image(img, 0, 0, width / 5, width / 5);
     noFill();
@@ -239,4 +242,33 @@ function draw() {
         textSize(width / 10);
         text("...", -width / 16, 0);
     }
+}
+
+function linksInit() {
+    var links = document.createElement("div");
+    links.style.textAlign = "center";
+    links.style.marginTop = "1%";
+
+    var downloadLink = document.createElement("label");
+    downloadLink.style.fontFamily = "Questrial";
+    downloadLink.style.margin = "30px";
+    downloadLink.style.color = "darkslategray";
+    downloadLink.style.cursor = "pointer";
+    downloadLink.innerHTML = "Download";
+    downloadLink.onclick = function () {
+        saveFile()
+    };
+    links.appendChild(downloadLink);
+
+    var communityLink = document.createElement("a");
+    communityLink.style.fontFamily = "Questrial";
+    communityLink.style.margin = "30px";
+    communityLink.style.color = "darkslategray";
+    communityLink.style.cursor = "pointer";
+    communityLink.innerHTML = "Community Creations";
+    communityLink.href = "https://twitter.com/search?q=%23AsyncRegalia";
+    communityLink.style.textDecoration = "none";
+    links.appendChild(communityLink);
+    document.body.appendChild(links);
+
 }
