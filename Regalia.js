@@ -139,7 +139,7 @@ function initializeOnAPI(res) {
     }
 
     if (symmetryLever <= 30) {
-        symmetry = 30;
+        symmetry = symmetryLever;
     } else {
         symmetry = 30;
     }
