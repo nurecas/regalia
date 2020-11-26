@@ -139,7 +139,7 @@ function initializeOnAPI(res) {
     }
 
     if (symmetryLever <= 30) {
-        symmetry = 30;
+        symmetry = symmetryLever;
     } else {
         symmetry = 30;
     }
@@ -149,6 +149,8 @@ function initializeOnAPI(res) {
     } else {
         brushSize = width / 150;
     }
+    //remove the below line
+    brushSize = width / 150;
 
     angle = 360 / symmetry;
     strokeVal = palette[0];
