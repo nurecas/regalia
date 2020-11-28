@@ -119,7 +119,6 @@ function loadAsyncAPI() {
 }
 
 function initializeOnAPI(res) {
-    console.log(res);
     //Async API initialize and store data
     var paletteLever = res.data.token.tokenMaster.layers[0].levers[0].currentValue;
     var insigniaLever = res.data.token.tokenMaster.layers[1].levers[0].currentValue;
