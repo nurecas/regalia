@@ -111,20 +111,20 @@ function loadAsyncAPI() {
             "Content-Type": "application/json"
         },
         body: JSON.stringify({
-            query: "{master(id:" + asyncMasterID + "){layers{levers{currentValue}}}}"
+            query: "{token(id:" + asyncMasterID + "){tokenMaster{layers{levers{currentValue}}}}}"
         })
     };
-
-    return fetch(`https://api.thegraph.com/subgraphs/name/asyncart/async-art`, options)
+    return fetch(`https://api.thegraph.com/subgraphs/name/avolabs-io/async_art_v2`, options)
         .then(res => res.json());
 }
 
 function initializeOnAPI(res) {
+    console.log(res);
     //Async API initialize and store data
-    var paletteLever = res.data.master.layers[0].levers[0].currentValue;
-    var insigniaLever = res.data.master.layers[1].levers[0].currentValue;
-    var symmetryLever = res.data.master.layers[2].levers[0].currentValue;
-    var brushSizeLever = res.data.master.layers[3].levers[0].currentValue;
+    var paletteLever = res.data.token.tokenMaster.layers[0].levers[0].currentValue;
+    var insigniaLever = res.data.token.tokenMaster.layers[1].levers[0].currentValue;
+    var symmetryLever = res.data.token.tokenMaster.layers[2].levers[0].currentValue;
+    var brushSizeLever = res.data.token.tokenMaster.layers[3].levers[0].currentValue;
 
     if (paletteLever <= 4) {
         palette = palettes[paletteLever];
