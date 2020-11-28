@@ -148,8 +148,6 @@ function initializeOnAPI(res) {
     } else {
         brushSize = width / 150;
     }
-    //remove the below line
-    brushSize = width / 150;
 
     angle = 360 / symmetry;
     strokeVal = palette[0];
